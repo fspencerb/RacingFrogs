@@ -1,0 +1,65 @@
+body {
+	
+}
+.panelTitle{
+	font-size: 2em;
+}
+.frog1header {
+	display: inline-block;
+	font: 600 Helvetica forestgreen;
+	font-size: 2em;
+}
+.frogName {
+	display: inline;
+	font-weight: 700;
+	font-size: 2.5em;
+	border: .5em;
+	border-color: black;
+	border-style: solid;
+	float: left;
+	position: absolute;
+}
+.raceLaneNum{
+	height: 3em;
+	width: 50em !important;
+	-webkit-text-size-adjust: 2.5em;
+	font-size: 2.5em;
+	font-weight: 700;
+	border: .5em;
+	border-color: black;
+	border-style: solid;
+	position: absolute;
+}
+.racingLane {
+	font-size: 2.5em;
+	background-color: darkgreen;
+	border-width: .5em;
+	border-color: black;
+	border-style: dashed;
+	position: absolute;
+	width: 100%;
+	height: 3em;
+}
+.frogimg {
+	size: 3em;
+}
+.imgcontainer {
+	vertical-align: middle;
+	width: 7em;
+    height: 4em;
+}
+.imgcontainer img{
+	display: block;
+	vertical-align: middle;
+	width: 100%;
+    height: auto;
+}
+.finishLine {
+	font-size: 2.5em;
+	-webkit-text-size-adjust: 2em;
+	font-weight: 700;
+	border: .5em;
+	border-color: black;
+	border-style: solid;
+	background-color: red;
+}
