@@ -15,14 +15,19 @@
         <div class="panel-body">
             <table class="racingTable">
                 <tr ng-repeat="frog in Racer">
-                    <td class="raceLaneNum">{{vm.froglist.LaneNum}}</td>
-                    <td class="frogName">{{vm.froglist.name}}</td> 
-                    <td class="racingLane"><div class="imgcontainer"><img class="frogimg" src="img/frogred.jpg" /><div>Start<div></td>
-                    <td class="finishLine">Finish</td>
+                    <td class="raceLaneNum">{{frog.LaneNum}}</td>
+                    <td class="frogName">{{frog.name}}</td> 
+                    <td class="racingLane">
+                        <div class="imgcontainer">
+                            <img class="frogimg" style="left: {{frog.posX}}%"src="img/frogred.jpg" />
+                            <div>Start ||</div>
+                        </div>
+                    </td>
+                    <td class="finishLine">|| Finish</td>
                 </tr>
                 
             </table>
-            <div class="frogName">
+            <!--<div class="frogName">
                 Jimmy
             </div>
             <div class="racingLane">
@@ -35,11 +40,18 @@
             </div>
             <div class="imgcontainer">
                 <img class="frogimg" src="img/froggreen.jpg" />
-            </div>
+            </div>-->
             Panel content
         </div>
     <div class="panel-footer">
         <span class="btn btn-default" ng-click="controller.race()">Start Race</span>
+        <span class="btn btn-default" ng-click="controller.race()">Add Frog<p>(no more than 9)</p></span>
+        <div class="alert alert-success" ng-repeat="winner in vm.winners" ng-if="vm.winners.length < 2">
+            WOOT! {{vm.winners[0].name}} won the race!
+        </div>
+        <div class="alert alert-warning" ng-repeat="winner in vm.winners" ng-if="vm.winners.length > 1">
+            Bummer! {{winner.name}} tied the race!
+        </div>
     </div>
 </div>
 
