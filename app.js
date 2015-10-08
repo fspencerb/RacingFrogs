@@ -22,6 +22,7 @@ function MainController($timeout, RacingService, BettingService) {
     //keep this function
     vm.addFrogToList = function(frog){
         vm.froglist.push(frog);
+        Racer();
     }
     
     vm.test = RacingService.addTwoNumbers(3,3);
@@ -42,7 +43,7 @@ function MainController($timeout, RacingService, BettingService) {
         vm.froglist.forEach(function(frog){
             if (frog.posX >= finishLine){
                 potentialWinners.push(frog);
-            } 
+            }
         });
         if(potentialWinners.length > 0) {
             var firstToCross = 0;

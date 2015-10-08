@@ -26,12 +26,14 @@
                     <td class="finishLine">|| Finish</td>
                 </tr>
             </table>
-            Panel content
         </div>
     <div class="panel-footer">
-        <span class="btn btn-default" ng-click="vm.startRace()">Start Race</span>
-        <span class="btn btn-default" ng-click="">Add Frog<p>(no more than 9)</p></span>
-        <span class="btn btn-default" ng-click="vm.reset()">Racers Back to<p>their starting lines</p></span>
+        <span class="btn btn-success" ng-click="vm.startRace()">Start Race</span>
+        <span class="btn btn-warning" ng-click="vm.addFrogToList()">Add Frog<p>(no more than 9)</p></span>
+        <form ng-submit="vm.addFrogToList().name">Frog Name: 
+            <input type="text" type="submit" name="frogname" title="i.e. Bill, Sam, George">
+        </form>
+        <span class="btn btn-danger" ng-click="vm.reset()">Racers Back to<p>their starting lines</p></span>
         <div class="alert alert-success" ng-repeat="winner in vm.winners" ng-if="vm.winners.length < 2">
             WOOT! {{vm.winners[0].name}} won the race!
         </div>
