@@ -3,16 +3,13 @@ app.controller('MainController', MainController);
 app.service('RacingService', RacingService);
 //No need to change anything above this line.
 
-// function RacingService(){
-//     var sv = this;
-//     
-//     sv.addTwoNumbers = function(x,y){
-//         return x + y;
-//     };
-// 
-// }
+function RacingService(){
+    this.addTwoNumbers = function(x,y) {
+        return x + y;
+    }
+}
 
-function MainController(RacingService) {
+function MainController($timeout, RacingService, BettingService) {
     var vm = this; //instead of using this when refering to the controller, let's use vm. It will make things easier.
     vm.bank = 200;
     vm.joe = new Guy ('joe', 100);
@@ -26,7 +23,7 @@ function MainController(RacingService) {
     vm.addFrogToList = function(frog){
         vm.froglist.push(frog);
     }
-
+    
     vm.test = RacingService.addTwoNumbers(3,3);
 
 
@@ -42,7 +39,7 @@ function MainController(RacingService) {
     function checkWinners() {
         var potentialWinners = [];
         vm.winners = [];
-        race.forEach(function(frog){
+        vm.froglist.forEach(function(frog){
             if (frog.posX >= finishLine){
                 potentialWinners.push(frog);
             } 
@@ -66,11 +63,11 @@ function MainController(RacingService) {
     }
 
     function moveFrogs(){
-        var indexOfFrogToMove = Math.floor(Math.random * vm.race.length) * 3;
-        vm.race[indexOfFrogToMove].posX += Math.random * 3;
+        checkWinners();
         if(vm.racing) {
-            checkWinners;
-            setTimeout(vm.moveFrogs, 200)
+            var indexOfFrogToMove = Math.floor(Math.random() * vm.froglist.length);
+            vm.froglist[indexOfFrogToMove].posX += Math.random() * 3;
+            $timeout(moveFrogs, 50)
         }
         // vm.froglist.forEach(function(frog){
         //     frog.posX += Math.random();
@@ -78,13 +75,19 @@ function MainController(RacingService) {
     }
 
     vm.startRace = function() {
-        if(!vm.racing)
-        setTimeout(function(){
-            moveFrogs();
-        }, 200);
+        vm.racing = true;
+        moveFrogs();
     }
     
+    vm.reset = function(){
+        vm.froglist.forEach(function(frog){
+            frog.posX = 1;
+        });
+    }
     // Betters Below Here
+// -----------------------------------------------
+
+
     
     function Guy(name, startingCash){
         this.name = name;
@@ -131,4 +134,25 @@ function MainController(RacingService) {
     }
     testing();
 
+}
+
+app.service('BettingService', BettingService);
+    function BettingService(){
+        var _races = {};
+        var _raceId = 0;
+        this.registerRace = function () {
+        
+    }
+    this.getRace = function (raceId) {
+                
+    }
+    var race = function(){
+        this.id = _raceId;
+        this.tickets = 1300;
+        this.contestants = [];
+        this.open = true;
+        this.bets = {};
+        _races[this.id] = this;
+        _raceId++;
+    }
 }

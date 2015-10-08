@@ -14,38 +14,24 @@
     </div>
         <div class="panel-body">
             <table class="racingTable">
-                <tr ng-repeat="frog in Racer">
+                <tr ng-repeat="frog in vm.froglist">
                     <td class="raceLaneNum">{{frog.LaneNum}}</td>
                     <td class="frogName">{{frog.name}}</td> 
                     <td class="racingLane">
                         <div class="imgcontainer">
-                            <img class="frogimg" style="left: {{frog.posX}}%"src="img/frogred.jpg" />
+                            <img class="frogimg" style="left: {{frog.posX}}%"src="img/froggreen.png" />
                             <div>Start ||</div>
                         </div>
                     </td>
                     <td class="finishLine">|| Finish</td>
                 </tr>
-                
             </table>
-            <!--<div class="frogName">
-                Jimmy
-            </div>
-            <div class="racingLane">
-                <div class="imgcontainer">
-                    <img class="frogimg" src="img/frogred.jpg" />
-                </div>
-            </div>
-            <div class="imgcontainer">
-                <img class="frogimg" src="img/frogblue.jpg" />
-            </div>
-            <div class="imgcontainer">
-                <img class="frogimg" src="img/froggreen.jpg" />
-            </div>-->
             Panel content
         </div>
     <div class="panel-footer">
-        <span class="btn btn-default" ng-click="controller.race()">Start Race</span>
-        <span class="btn btn-default" ng-click="controller.race()">Add Frog<p>(no more than 9)</p></span>
+        <span class="btn btn-default" ng-click="vm.startRace()">Start Race</span>
+        <span class="btn btn-default" ng-click="">Add Frog<p>(no more than 9)</p></span>
+        <span class="btn btn-default" ng-click="vm.reset()">Racers Back to<p>their starting lines</p></span>
         <div class="alert alert-success" ng-repeat="winner in vm.winners" ng-if="vm.winners.length < 2">
             WOOT! {{vm.winners[0].name}} won the race!
         </div>
