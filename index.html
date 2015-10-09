@@ -29,9 +29,10 @@
         </div>
     <div class="panel-footer">
         <span class="btn btn-success" ng-click="vm.startRace()">Start Race</span>
-        <span class="btn btn-warning" ng-click="vm.addFrogToList()">Add Frog<p>(no more than 9)</p></span>
-        <form ng-submit="vm.addFrogToList().name">Frog Name: 
-            <input type="text" type="submit" name="frogname" title="i.e. Bill, Sam, George">
+        <form ng-submit="vm.addFrogToList().name">
+            <button type="submit" class="btn btn-warning" ng-click="vm.addFrogToList()">Add Frog<p>(no more than 9)</p></button>
+                <label for="frogname">Frog Name: </label>
+            <input type="text" placeholder="(i.e. Bill, Sam, George)" name="frogname" title="Frog Name" ng-model="frog.name">
         </form>
         <span class="btn btn-danger" ng-click="vm.reset()">Racers Back to<p>their starting lines</p></span>
         <div class="alert alert-success" ng-repeat="winner in vm.winners" ng-if="vm.winners.length < 2">

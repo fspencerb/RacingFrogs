@@ -12,18 +12,21 @@ function RacingService(){
 function MainController($timeout, RacingService, BettingService) {
     var vm = this; //instead of using this when refering to the controller, let's use vm. It will make things easier.
     vm.bank = 200;
-    vm.joe = new Guy ('joe', 100);
-    vm.bob = new Guy ('bob', 150);
     vm.froglist = [];
     
     var finishLine = 93;
     var maxDistance = 97;
+    var frogLimit = 9;
 
-    //keep this function
-    vm.addFrogToList = function(frog){
-        vm.froglist.push(frog);
-        Racer();
+    //Adding customized frog to list.
+    vm.addFrogToList = function(frogname){
+        var newlaneNum = vm.froglist.length + 1;
+        vm.froglist.push(new Racer (newlaneNum, frogname, 1));
+        
     }
+     //   var frog1 = new Racer (1, {{frog.name}}, 1);
+     //   Racer.name.push();
+    
     
     vm.test = RacingService.addTwoNumbers(3,3);
 
@@ -64,12 +67,12 @@ function MainController($timeout, RacingService, BettingService) {
     }
 
     function moveFrogs(){
-        checkWinners();
         if(vm.racing) {
             var indexOfFrogToMove = Math.floor(Math.random() * vm.froglist.length);
             vm.froglist[indexOfFrogToMove].posX += Math.random() * 3;
             $timeout(moveFrogs, 50)
         }
+        checkWinners();
         // vm.froglist.forEach(function(frog){
         //     frog.posX += Math.random();
         // })
@@ -87,8 +90,20 @@ function MainController($timeout, RacingService, BettingService) {
     }
     // Betters Below Here
 // -----------------------------------------------
-
-
+    function inittestbetter(){
+        vm.joe = new Guy ('joe', 100);
+        vm.bob = new Guy ('bob', 150);
+    };
+    
+    function inittestracers (){
+       var frog1 = new Racer (1, 'Jimmy', 1);
+       var frog2 = new Racer (2, 'George', 1);
+       var frog3 = new Racer (3, 'Frank', 1);
+       vm.addFrogToList(frog1);
+       vm.addFrogToList(frog2);
+       vm.addFrogToList(frog3);
+    };
+    inittestracers();
     
     function Guy(name, startingCash){
         this.name = name;
@@ -123,18 +138,6 @@ function MainController($timeout, RacingService, BettingService) {
     vm.receiveMoneyFromBob = function() {
         vm.bank += vm.bob.giveCash(5)
     }
-
-
-    function testing (){
-       var frog1 = new Racer (1, 'Jimmy', 1);
-       var frog2 = new Racer (2, 'George', 1);
-       var frog3 = new Racer (3, 'Frank', 1);
-       vm.addFrogToList(frog1);
-       vm.addFrogToList(frog2);
-       vm.addFrogToList(frog3);
-    }
-    testing();
-
 }
 
 app.service('BettingService', BettingService);
