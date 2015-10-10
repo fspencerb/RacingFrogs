@@ -82,9 +82,6 @@ function MainController($timeout, RacingService, BettingService) {
     }
 
     vm.startRace = function () {
-        if (vm.racing) {
-            return;
-        }
         vm.racing = true;
         moveFrogs();
     }
@@ -98,13 +95,6 @@ function MainController($timeout, RacingService, BettingService) {
     // -----------------------------------------------
     vm.joe = new Guy('joe', 100);
     vm.bob = new Guy('bob', 150);
-
-    function inittestracers() {
-        vm.addFrogToList('Jimmy');
-        vm.addFrogToList('George');
-        vm.addFrogToList('Frank');
-    };
-    inittestracers();
 
     function Guy(name, startingCash) {
         this.name = name;
