@@ -24,7 +24,7 @@ function MainController($timeout, RacingService, BettingService) {
             return;
         }
         var newlaneNum = vm.froglist.length + 1;
-        vm.froglist.push(new Racer(newlaneNum, frogname, 1));
+        vm.froglist.push(new Racer(newlaneNum, frogname, 0));
         vm.frogName = '';
     }
     //   var frog1 = new Racer (1, {{frog.name}}, 1);
