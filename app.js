@@ -27,15 +27,10 @@ function MainController($timeout, RacingService, BettingService) {
         vm.froglist.push(new Racer(newlaneNum, frogname, 0));
         vm.frogName = '';
     }
-    //   var frog1 = new Racer (1, {{frog.name}}, 1);
-    //   Racer.name.push();
-    
-    
+    // Add different frog image to each frog
+      //  $($('.frogimg')[0]).html('<img src = "' + images[slotOne-1] + '">');
+
     vm.test = RacingService.addTwoNumbers(3, 3);
-
-
-    // vm.froglist = [vm.frog1, vm.frog2, vm.frog3];
-    // vm.frog1.push  is there a way to push the frogs to an array?
     
     function Racer(LaneNum, name, posX) {
         this.LaneNum = LaneNum;
